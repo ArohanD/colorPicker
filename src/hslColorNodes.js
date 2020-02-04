@@ -7,18 +7,15 @@ class ColorNode {
   }
 }
 
-console.log(new ColorNode(124, 100, 24))
-
-let rows = [];
-for(let r = 100; r >0; r--){
+let columns = [];
+for(let h = 360; h >= 0; h--){
   let colors = []
-  for(let i = 360; i >= 0; i--) {
-    colors.push(new ColorNode(i, 100, r))
+  for(let c = 100; c >0; c--) {
+    colors.push(new ColorNode(h, 100, c))
   }
-  rows.push(colors)
+  columns.push(colors)
 }
 
-const hslColors = rows.map(row => row.map(colorNode => colorNode.color))
-console.log(hslColors)
+const hslColors = columns.map(column => column.map(colorNode => colorNode.color))
 
 export default hslColors;

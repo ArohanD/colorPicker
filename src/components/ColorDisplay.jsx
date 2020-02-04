@@ -1,35 +1,33 @@
 import React from 'react';
 import generateColors from '../hexColors.js'
-import colors from '../hslColorNodes.js'
+import hslColors from '../hslColorNodes.js'
 
-//const colors = generateColors();
+//colors = colors.slice(50).concat(colors.slice(0, 50))
 
 const ColorDisplay = (props) => {
+  const colors = hslColors //.slice(180).concat(hslColors.slice(0, 180))
 
   const containerStyle = {
     display: 'flex',
-    flexDirection: 'column',
-    //flexWrap: 'wrap',
+    flexDirection: 'row',
     width: '80vw'
   }
 
   const rowStyle = {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
   }
 
   return (
-    <div>
+    <div style={containerStyle}>
       {
-        colors.map(row => {
+        colors.map(col => {
           return(
-            <div style={containerStyle}>
               <div style={rowStyle}>
                 {
-                  row.map(color => <ColorCell color={color} />)
+                  col.map(color => <ColorCell color={color} />)
                 }
               </div>
-            </div>
           )
         })
       }
@@ -42,7 +40,7 @@ const ColorCell = (props) => {
   const cellStyle = {
     backgroundColor: props.color,
     height: '10px',
-    width: '10px'
+    width: '2.7px'
   }
 
   return (
