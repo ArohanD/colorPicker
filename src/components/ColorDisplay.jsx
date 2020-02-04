@@ -39,7 +39,7 @@ const ColorCell = (props) => {
 
   const cellStyle = {
     backgroundColor: props.color,
-    height: '10px',
+    height: '8px',
     width: '2.7px'
   }
 

@@ -10,7 +10,7 @@ class ColorNode {
 let columns = [];
 for(let h = 360; h >= 0; h--){
   let colors = []
-  for(let c = 100; c >0; c--) {
+  for(let c = 100; c >= 0; c--) {
     colors.push(new ColorNode(h, 100, c))
   }
   columns.push(colors)
