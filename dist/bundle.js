@@ -218,6 +218,42 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./src/components/ColorDisplay.jsx":
+/*!*****************************************!*\
+  !*** ./src/components/ColorDisplay.jsx ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _hexColors_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hexColors.js */ \"./src/hexColors.js\");\n/* harmony import */ var _hslColorNodes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hslColorNodes.js */ \"./src/hslColorNodes.js\");\n\n\n //const colors = generateColors();\n\nvar ColorDisplay = function ColorDisplay(props) {\n  var containerStyle = {\n    display: 'flex',\n    flexDirection: 'column',\n    //flexWrap: 'wrap',\n    width: '80vw'\n  };\n  var rowStyle = {\n    display: 'flex',\n    flexDirection: 'row'\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, _hslColorNodes_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"].map(function (row) {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      style: containerStyle\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      style: rowStyle\n    }, row.map(function (color) {\n      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ColorCell, {\n        color: color\n      });\n    })));\n  }));\n};\n\nvar ColorCell = function ColorCell(props) {\n  var cellStyle = {\n    backgroundColor: props.color,\n    height: '10px',\n    width: '10px'\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    style: cellStyle\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ColorDisplay);\n\n//# sourceURL=webpack:///./src/components/ColorDisplay.jsx?");
+
+/***/ }),
+
+/***/ "./src/hexColors.js":
+/*!**************************!*\
+  !*** ./src/hexColors.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar hexVals = ['0', '4', '8', 'A', 'E'];\n\nvar generateColors = function generateColors() {\n  var colorArray = hexVals.slice().map(function (num) {\n    return '#' + num;\n  });\n\n  for (var i = 0; i < 5; i++) {\n    colorArray = appendElements(colorArray, hexVals);\n  }\n\n  return colorArray;\n};\n\nvar appendElements = function appendElements(array1, array2) {\n  var newArr = [];\n\n  for (var i = 0; i < array1.length; i++) {\n    for (var j = 0; j < array2.length; j++) {\n      newArr.push(array1[i] + array2[j]);\n    }\n  }\n\n  return newArr;\n}; //console.log(appendElements([1,2,3,4], ['a', 'b', 'c', 'd']))\n//console.log(generateColors())\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (generateColors);\n\n//# sourceURL=webpack:///./src/hexColors.js?");
+
+/***/ }),
+
+/***/ "./src/hslColorNodes.js":
+/*!******************************!*\
+  !*** ./src/hslColorNodes.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar ColorNode = function ColorNode(h, s, l) {\n  _classCallCheck(this, ColorNode);\n\n  this.H = h;\n  this.S = s;\n  this.L = l;\n  this.color = \"hsl(\".concat(h, \", \").concat(s + '%', \", \").concat(l + '%', \")\");\n};\n\nconsole.log(new ColorNode(124, 100, 24));\nvar rows = [];\n\nfor (var r = 100; r > 0; r--) {\n  var colors = [];\n\n  for (var i = 360; i >= 0; i--) {\n    colors.push(new ColorNode(i, 100, r));\n  }\n\n  rows.push(colors);\n}\n\nvar hslColors = rows.map(function (row) {\n  return row.map(function (colorNode) {\n    return colorNode.color;\n  });\n});\nconsole.log(hslColors);\n/* harmony default export */ __webpack_exports__[\"default\"] = (hslColors);\n\n//# sourceURL=webpack:///./src/hslColorNodes.js?");
+
+/***/ }),
+
 /***/ "./src/index.jsx":
 /*!***********************!*\
   !*** ./src/index.jsx ***!
@@ -226,7 +262,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nvar App = function App() {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, \"This is React\");\n};\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_ColorDisplay_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/ColorDisplay.jsx */ \"./src/components/ColorDisplay.jsx\");\n\n\n\n\nvar App = function App() {\n  var appStyle = {\n    padding: '10px'\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    style: appStyle\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"Color Generator\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"p\", null, \"Generate an array of browser-friendly colors based on lines you draw.\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ColorDisplay_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n};\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/index.jsx?");
 
 /***/ })
 
