@@ -15,7 +15,7 @@ const ColorDisplay = (props) => {
               <div className={'colorRow'} key={y}>
                 {
                   col.map((color, x) => <ColorCell 
-                                    color={color}
+                                    color={color.hslColor}
                                     handleClick={props.handleClick} 
                                     coordinates={[y, x]}
                                     key={[y, x]}

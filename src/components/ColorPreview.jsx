@@ -5,8 +5,8 @@ const ColorPreview = (props) => {
     <div id='preview'>
       {
         props.colorArray.map(color => <ColorCell 
-        key={color}
-        color={color} />)
+        key={color.hslColor}
+        color={color.hslColor} />)
       }
     </div>
   )
