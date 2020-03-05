@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import ColorDisplay from './components/ColorDisplay.jsx';
 import hslColors from './hslColorNodes'
+import ColorDisplay from './components/ColorDisplay.jsx';
+import ColorPreview from './components/ColorPreview.jsx'
 
 const App = () => {
   const [colorArray, setColorArray] = useState([])
@@ -32,12 +33,9 @@ const App = () => {
     let [startX, startY] = start;
     let [endX, endY] = end;
 
-    //y = mx + b
-    //-b + y = mx
-    // -b = mx - y
+    /// SLOPE CALCULATIONS ///
+    // y = mx + b
     // b = -1(mx - y)
-
-    // y - b = mx
     // x = (y - b) / m
     const slope = (endY - startY) / (endX - startX);
     const slopeB = ((slope * startX) - startY) * -1;
@@ -69,6 +67,7 @@ const App = () => {
         handleClick={handleClick.bind(this)}
         hslColors={hslColors}
         />
+      <ColorPreview />
     </div>
   )
 }
