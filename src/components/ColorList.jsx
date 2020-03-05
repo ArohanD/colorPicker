@@ -14,7 +14,7 @@ const ColorList = (props) => {
 
   let hexColors = props.colorArray
   .map(color => convert.hsl.hex(color.H, color.S, color.L))
-  .map(raw => `#${raw}`)
+  .map(raw => `"#${raw}"`)
   .join(', ')
 
   return (
