@@ -31,15 +31,12 @@ const ColorDisplay = (props) => {
 
 const ColorCell = (props) => {
 
-  const cellStyle = {
-    backgroundColor: props.color,
-    height: '8px',
-    width: '4px'
-  }
-
   return (
-    <div style={cellStyle} id={JSON.stringify(props.coordinates)} onClick={(e) => props.handleClick(e)}>
-
+    <div
+      className={'colorCell'} 
+      style={{'--color': props.color}} 
+      id={JSON.stringify(props.coordinates)} 
+      onClick={(e) => props.handleClick(e)}>
     </div>
   )
 }
