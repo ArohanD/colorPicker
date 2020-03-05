@@ -7,23 +7,12 @@ import convert from 'color-convert';
 const ColorDisplay = (props) => {
   const colors = props.hslColors //.slice(180).concat(hslColors.slice(0, 180))
 
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '80vw'
-  }
-
-  const rowStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-  }
-
   return (
-    <div style={containerStyle}>
+    <div id={'colorContainer'}>
       {
         colors.map((col, y) => {
           return(
-              <div style={rowStyle} key={y}>
+              <div class={'colorRow'} key={y}>
                 {
                   col.map((color, x) => <ColorCell 
                                     color={color}

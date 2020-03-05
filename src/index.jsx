@@ -10,10 +10,6 @@ const App = () => {
   const [endPoint, setEndPoint] = useState([])
   const [adjustFirstCoordinate, setAdjustFirstCoordinate] = useState(true)
 
-  const appStyle = {
-    padding: '10px'
-  }
-
   const handleClick = (e) => {
     const coordinates = JSON.parse(e.target.id);
     if(startPoint.length === 0 || adjustFirstCoordinate) {
@@ -60,7 +56,7 @@ const App = () => {
   }
 
   return (
-    <div style={appStyle}>
+    <div id={'app'}>
       <h1>Color Generator</h1>
       <p>Generate an array of browser-friendly colors based on lines you draw.</p>
       <ColorDisplay 
