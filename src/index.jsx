@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import hslColors from './hslColorNodes'
 import ColorDisplay from './components/ColorDisplay.jsx';
 import ColorPreview from './components/ColorPreview.jsx'
+import ColorList from './components/ColorList.jsx'
 
 const App = () => {
   const [colorArray, setColorArray] = useState([])
@@ -64,6 +65,7 @@ const App = () => {
         hslColors={hslColors}
         />
       <ColorPreview colorArray={colorArray}/>
+      <ColorList colorArray={colorArray} />
     </div>
   )
 }

@@ -4,7 +4,9 @@ const ColorPreview = (props) => {
   return (
     <div id='preview'>
       {
-        props.colorArray.map(color => <ColorCell color={color}/>)
+        props.colorArray.map(color => <ColorCell 
+        key={color}
+        color={color} />)
       }
     </div>
   )

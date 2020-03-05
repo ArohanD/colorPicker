@@ -12,7 +12,7 @@ const ColorDisplay = (props) => {
       {
         colors.map((col, y) => {
           return(
-              <div class={'colorRow'} key={y}>
+              <div className={'colorRow'} key={y}>
                 {
                   col.map((color, x) => <ColorCell 
                                     color={color}
