@@ -56,9 +56,8 @@ const App = () => {
     }
 
     const coordinateList = xArray.length > yArray.length ? xArray : yArray;
-    const colorArray = coordinateList.map(coordinates => hslColors[coordinates[0]][coordinates[1]])
-    console.log(colorArray)
-
+    const colorList = coordinateList.map(coordinates => hslColors[coordinates[0]][coordinates[1]])
+    setColorArray(colorList)
 
   }
 
