@@ -8,9 +8,9 @@ class ColorNode {
 }
 
 let columns = [];
-for(let h = 360; h >= 0; h--){
+for(let h = 360; h >= 0; h-=2){
   let colors = []
-  for(let c = 100; c >= 0; c--) {
+  for(let c = 100; c >= 0; c-=2) {
     colors.push(new ColorNode(h, 100, c))
   }
   columns.push(colors)
