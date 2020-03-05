@@ -63,7 +63,7 @@ const App = () => {
         handleClick={handleClick.bind(this)}
         hslColors={hslColors}
         />
-      <ColorPreview />
+      <ColorPreview colorArray={colorArray}/>
     </div>
   )
 }
