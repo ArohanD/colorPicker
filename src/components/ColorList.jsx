@@ -30,14 +30,12 @@ const ColorList = (props) => {
     reRender()
   }, [props.colorArray, quotes, props.colorType])
 
-
-
-
   return (
     <div>
       <div>
         <label className='switch'>
-          <input type="checkbox" onChange={() => setQuotes(!quotes)} defaultChecked/>
+          Quotes:
+          <input type="checkbox" onChange={() => setQuotes(!quotes)} defaultChecked />
         </label>
       </div>
       <div id='ColorList'>

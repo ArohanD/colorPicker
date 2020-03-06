@@ -61,6 +61,12 @@ const App = () => {
     <div id={'app'}>
       <h1>Color Generator</h1>
       <p>Generate an array of browser-friendly colors based on lines you draw.</p>
+      <div>
+        Color Format:
+        <button onClick={() => setColorType('hex')}>Hex</button>
+        <button onClick={() => setColorType('rgb')}>RGB</button>
+        <button onClick={() => setColorType('hsl')}>HSL</button>
+      </div>
       <ColorDisplay
         handleClick={handleClick.bind(this)}
         hslColors={hslColors}
