@@ -10,10 +10,11 @@ const App = () => {
   const [startPoint, setStartPoint] = useState([])
   const [endPoint, setEndPoint] = useState([])
   const [adjustFirstCoordinate, setAdjustFirstCoordinate] = useState(true)
+  const [colorType, setColorType] = useState('hex')
 
   const handleClick = (e) => {
     const coordinates = JSON.parse(e.target.id);
-    if(startPoint.length === 0 || adjustFirstCoordinate) {
+    if (startPoint.length === 0 || adjustFirstCoordinate) {
       setStartPoint(coordinates)
       setAdjustFirstCoordinate(false)
     } else {
@@ -40,12 +41,12 @@ const App = () => {
     const xArray = [];
     const yArray = [];
 
-    for(let y = startY; endY > startY ? y <= endY : y >= endY; endY > startY ? y++ : y--) {
+    for (let y = startY; endY > startY ? y <= endY : y >= endY; endY > startY ? y++ : y--) {
       let x = Math.floor((y - slopeB) / slope)
       yArray.push([x, y])
     }
-    
-    for(let x = startX; endX > startX ? x <= endX : x >= endX; endX > startX ? x++ : x--) {
+
+    for (let x = startX; endX > startX ? x <= endX : x >= endX; endX > startX ? x++ : x--) {
       let y = Math.floor(slope * x + slopeB)
       xArray.push([x, y])
     }
@@ -60,12 +61,14 @@ const App = () => {
     <div id={'app'}>
       <h1>Color Generator</h1>
       <p>Generate an array of browser-friendly colors based on lines you draw.</p>
-      <ColorDisplay 
+      <ColorDisplay
         handleClick={handleClick.bind(this)}
         hslColors={hslColors}
-        />
-      <ColorPreview colorArray={colorArray}/>
-      <ColorList colorArray={colorArray} />
+      />
+      <ColorPreview colorArray={colorArray} />
+      <ColorList
+        colorArray={colorArray}
+        colorType={colorType} />
     </div>
   )
 }
