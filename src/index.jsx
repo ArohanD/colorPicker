@@ -6,11 +6,13 @@ import ColorPreview from './components/ColorPreview.jsx'
 import ColorList from './components/ColorList.jsx'
 
 const App = () => {
+  const [colorWall, setColorWall] = useState(hslColors)
   const [colorArray, setColorArray] = useState([])
   const [startPoint, setStartPoint] = useState([])
   const [endPoint, setEndPoint] = useState([])
   const [adjustFirstCoordinate, setAdjustFirstCoordinate] = useState(true)
   const [colorType, setColorType] = useState('hex')
+  const [lineCoordinates, setLineCoordinates] = useState([])
 
   const handleClick = (e) => {
     const coordinates = JSON.parse(e.target.id);
@@ -52,7 +54,8 @@ const App = () => {
     }
 
     const coordinateList = xArray.length > yArray.length ? xArray : yArray;
-    const colorList = coordinateList.map(coordinates => hslColors[coordinates[0]][coordinates[1]])
+    setLineCoordinates(coordinateList)
+    const colorList = coordinateList.map(coordinates => colorWall[coordinates[0]][coordinates[1]])
     setColorArray(colorList)
 
   }
@@ -82,7 +85,9 @@ const App = () => {
       <div id={'colorDisplays'}>
         <ColorDisplay
           handleClick={handleClick.bind(this)}
-          hslColors={hslColors}
+          hslColors={colorWall}
+          setColorWall={setColorWall.bind(this)}
+          line={lineCoordinates}
         />
         <ColorPreview colorArray={colorArray} />
       </div>
