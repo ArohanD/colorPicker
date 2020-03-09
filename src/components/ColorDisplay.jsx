@@ -6,10 +6,11 @@ import convert from 'color-convert';
 
 const ColorDisplay = (props) => {
   let colors = props.hslColors;
-  useEffect(() => {
-    colors = colors.slice(90).concat(props.hslColors.slice(0, 90))
-    props.setColorWall(colors)
-  }, [])
+  // TODO: Offset
+  // useEffect(() => {
+  //   colors = colors.slice(90).concat(props.hslColors.slice(0, 90))
+  //   props.setColorWall(colors)
+  // }, [])
 
   return (
     <div id={'colorContainer'}>
