@@ -59,19 +59,33 @@ const App = () => {
 
   return (
     <div id={'app'}>
-      <h1>Color Generator</h1>
-      <p>Generate an array of browser-friendly colors based on lines you draw.</p>
-      <div>
-        Color Format:
-        <button onClick={() => setColorType('hex')}>Hex</button>
-        <button onClick={() => setColorType('rgb')}>RGB</button>
-        <button onClick={() => setColorType('hsl')}>HSL</button>
+      <h1>Web Color Generator</h1>
+      <p id='description'>Generate an array of browser-friendly colors based on lines you draw.</p>
+      <div id={'options'}>
+        <span id={'format'}>Color Format:</span> 
+        <button
+          style={colorType === 'hex' ? { 'background': '#FFB8EE' } : null}
+          onClick={() => setColorType('hex')}>
+          Hex
+        </button>
+        <button
+          style={colorType === 'rgb' ? { 'background': '#FFB8EE' } : null}
+          onClick={() => setColorType('rgb')}>
+          RGB
+        </button>
+        <button
+          style={colorType === 'hsl' ? { 'background': '#FFB8EE' } : null}
+          onClick={() => setColorType('hsl')}>
+          HSL
+        </button>
       </div>
-      <ColorDisplay
-        handleClick={handleClick.bind(this)}
-        hslColors={hslColors}
-      />
-      <ColorPreview colorArray={colorArray} />
+      <div id={'colorDisplays'}>
+        <ColorDisplay
+          handleClick={handleClick.bind(this)}
+          hslColors={hslColors}
+        />
+        <ColorPreview colorArray={colorArray} />
+      </div>
       <ColorList
         colorArray={colorArray}
         colorType={colorType} />

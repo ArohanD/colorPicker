@@ -34,7 +34,7 @@ const ColorList = (props) => {
     <div>
       <div>
         <label className='switch'>
-          Quotes:
+          Include quotes in array:
           <input type="checkbox" onChange={() => setQuotes(!quotes)} defaultChecked />
         </label>
       </div>
