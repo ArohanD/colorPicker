@@ -1,12 +1,12 @@
 {
   "name": "react-ing",
   "version": "1.0.0",
-  "description": "donuts, cats, react, and such",
+  "description": "Generate an array of web colors based on a color graph",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "webpack --watch",
-    "start": "nodemon server/server.js"
+    "start": "firebase serve",
+    "deploy": "firebase deploy"
   },
   "author": "Arohan",
   "license": "ISC",
