@@ -23,6 +23,7 @@ const ColorDisplay = (props) => {
                                     color={color.hslColor}
                                     handleClick={props.handleClick} 
                                     coordinates={[y, x]}
+                                    handleMouseOver={props.handleMouseOver}
                                     key={[y, x]}
                                     />)
                 }
@@ -41,7 +42,8 @@ const ColorCell = (props) => {
       className={'colorCell'} 
       style={{'--color': props.color}} 
       id={JSON.stringify(props.coordinates)} 
-      onClick={(e) => props.handleClick(e)}>
+      onClick={(e) => props.handleClick(e)}
+      onMouseOver={(e) => props.handleMouseOver(e)}>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import hslColors from './hslColorNodes'
 import ColorDisplay from './components/ColorDisplay.jsx';
 import ColorPreview from './components/ColorPreview.jsx'
 import ColorList from './components/ColorList.jsx'
+import { Line } from 'react-lineto'
 
 const App = () => {
   const [colorWall, setColorWall] = useState(hslColors)
@@ -12,16 +13,20 @@ const App = () => {
   const [endPoint, setEndPoint] = useState([])
   const [adjustFirstCoordinate, setAdjustFirstCoordinate] = useState(true)
   const [colorType, setColorType] = useState('hex')
-  const [lineCoordinates, setLineCoordinates] = useState([])
+  const [lineCoordinates, setLineCoordinates] = useState([[0, 0], [0, 0]])
 
   const handleClick = (e) => {
     const coordinates = JSON.parse(e.target.id);
     if (startPoint.length === 0 || adjustFirstCoordinate) {
       setStartPoint(coordinates)
       setAdjustFirstCoordinate(false)
+      setLineCoordinates([[e.pageX, e.pageY], [e.pageX, e.pageY]]);
     } else {
       setEndPoint(coordinates)
       setAdjustFirstCoordinate(true)
+      let newCoordinates = JSON.parse(JSON.stringify(lineCoordinates));
+      newCoordinates[1] = [e.pageX, e.pageY];
+      setLineCoordinates(newCoordinates)
     }
   }
 
@@ -43,21 +48,32 @@ const App = () => {
     const xArray = [];
     const yArray = [];
 
-    for (let y = startY; endY > startY ? y <= endY : y >= endY; endY > startY ? y++ : y--) {
+    for (let y = startY;
+      endY > startY ? y <= endY : y >= endY;
+      endY > startY ? y++ : y--) {
       let x = Math.floor((y - slopeB) / slope)
       yArray.push([x, y])
     }
 
-    for (let x = startX; endX > startX ? x <= endX : x >= endX; endX > startX ? x++ : x--) {
+    for (let x = startX;
+      endX > startX ? x <= endX : x >= endX;
+      endX > startX ? x++ : x--) {
       let y = Math.floor(slope * x + slopeB)
       xArray.push([x, y])
     }
 
     const coordinateList = xArray.length > yArray.length ? xArray : yArray;
-    setLineCoordinates(coordinateList)
     const colorList = coordinateList.map(coordinates => colorWall[coordinates[0]][coordinates[1]])
     setColorArray(colorList)
 
+  }
+
+  const handleMouseOver = (e) => {
+    if(!adjustFirstCoordinate) {
+      let newCoordinates = JSON.parse(JSON.stringify(lineCoordinates));
+      newCoordinates[1] = [e.pageX, e.pageY];
+      setLineCoordinates(newCoordinates)
+    }
   }
 
   return (
@@ -65,7 +81,7 @@ const App = () => {
       <h1>Web Color Generator</h1>
       <p id='description'>Generate an array of browser-friendly colors based on lines you draw.</p>
       <div id={'options'}>
-        <span id={'format'}>Color Format:</span> 
+        <span id={'format'}>Color Format:</span>
         <button
           style={colorType === 'hex' ? { 'background': '#FFB8EE' } : null}
           onClick={() => setColorType('hex')}>
@@ -87,13 +103,18 @@ const App = () => {
           handleClick={handleClick.bind(this)}
           hslColors={colorWall}
           setColorWall={setColorWall.bind(this)}
-          line={lineCoordinates}
+          handleMouseOver={handleMouseOver.bind(this)}
         />
         <ColorPreview colorArray={colorArray} />
       </div>
       <ColorList
         colorArray={colorArray}
         colorType={colorType} />
+      <Line
+        x0={lineCoordinates[0][0]}
+        y0={lineCoordinates[0][1]}
+        x1={lineCoordinates[1][0]}
+        y1={lineCoordinates[1][1]} />
     </div>
   )
 }
