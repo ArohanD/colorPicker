@@ -75,7 +75,11 @@ const App = () => {
     if (!adjustFirstCoordinate) {
       let newCoordinates = JSON.parse(JSON.stringify(lineCoordinates));
       newCoordinates[1] = [e.pageX, e.pageY];
-      setLineCoordinates(newCoordinates)
+      ReactDOM.render(<Line
+        x0={lineCoordinates[0][0]}
+        y0={lineCoordinates[0][1]}
+        x1={newCoordinates[1][0]}
+        y1={newCoordinates[1][1]} />, document.getElementById('line'))
     }
   }
 
@@ -135,11 +139,6 @@ const App = () => {
       <ColorList
         colorArray={colorArray}
         colorType={colorType} />
-      <Line
-        x0={lineCoordinates[0][0]}
-        y0={lineCoordinates[0][1]}
-        x1={lineCoordinates[1][0]}
-        y1={lineCoordinates[1][1]} />
     </div>
   )
 }
