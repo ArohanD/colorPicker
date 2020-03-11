@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import hslColors from './hslColorNodes'
 import ColorDisplay from './components/ColorDisplay.jsx';
@@ -7,6 +7,7 @@ import ColorList from './components/ColorList.jsx'
 import { Line } from 'react-lineto'
 
 const App = () => {
+  const baseColors = hslColors;
   const [colorWall, setColorWall] = useState(hslColors)
   const [colorArray, setColorArray] = useState([])
   const [startPoint, setStartPoint] = useState([])
@@ -14,6 +15,8 @@ const App = () => {
   const [adjustFirstCoordinate, setAdjustFirstCoordinate] = useState(true)
   const [colorType, setColorType] = useState('hex')
   const [lineCoordinates, setLineCoordinates] = useState([[0, 0], [0, 0]])
+  const [offSet, setOffSet] = useState(0)
+  const newOffSet = useRef(offSet);
 
   const handleClick = (e) => {
     const coordinates = JSON.parse(e.target.id);
@@ -31,12 +34,12 @@ const App = () => {
   }
 
   useEffect(() => {
-    connect(startPoint, endPoint)
-  }, [endPoint])
+    connect()
+  }, [endPoint, colorWall])
 
-  const connect = (start, end) => {
-    let [startX, startY] = start;
-    let [endX, endY] = end;
+  const connect = () => {
+    let [startX, startY] = startPoint;
+    let [endX, endY] = endPoint;
 
     /// SLOPE CALCULATIONS ///
     // y = mx + b
@@ -69,11 +72,19 @@ const App = () => {
   }
 
   const handleMouseOver = (e) => {
-    if(!adjustFirstCoordinate) {
+    if (!adjustFirstCoordinate) {
       let newCoordinates = JSON.parse(JSON.stringify(lineCoordinates));
       newCoordinates[1] = [e.pageX, e.pageY];
       setLineCoordinates(newCoordinates)
     }
+  }
+
+  const shiftWall = (e) => {
+    let shift = +e.target.value
+    newOffSet.current = shift
+    setTimeout(() => {
+      setOffSet(newOffSet.current)
+    }, 1000);
   }
 
   return (
@@ -101,11 +112,25 @@ const App = () => {
       <div id={'colorDisplays'}>
         <ColorDisplay
           handleClick={handleClick.bind(this)}
+          baseColors={baseColors}
           hslColors={colorWall}
           setColorWall={setColorWall.bind(this)}
           handleMouseOver={handleMouseOver.bind(this)}
+          offSet={offSet}
         />
         <ColorPreview colorArray={colorArray} />
+      </div>
+      <div>
+        <label htmlFor="offset">Offset:</label>
+        <input
+          type="range"
+          name="offset"
+          id="offset"
+          min="0"
+          max="180"
+          step="10"
+          defaultValue={offSet}
+          onChangeCapture={(e) => shiftWall(e)} />
       </div>
       <ColorList
         colorArray={colorArray}
