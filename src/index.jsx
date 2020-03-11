@@ -6,6 +6,9 @@ import ColorPreview from './components/ColorPreview.jsx'
 import ColorList from './components/ColorList.jsx'
 import { Line } from 'react-lineto'
 
+// Remove for local testing
+import { analytics } from './firebase.js'
+
 const App = () => {
   const baseColors = hslColors;
   const [colorWall, setColorWall] = useState(hslColors)
