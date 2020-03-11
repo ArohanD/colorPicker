@@ -16,8 +16,6 @@ for(let h = 360; h >= 0; h-=2){
   columns.push(colors)
 }
 
-// const hslColors = columns.map(column => column.map(colorNode => colorNode.color))
-
 const hslColors = columns;
 
 export default hslColors;
