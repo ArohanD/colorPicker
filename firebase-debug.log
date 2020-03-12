@@ -1,0 +1,25 @@
+[debug] [2020-03-12T22:49:55.960Z] ----------------------------------------------------------------------
+[debug] [2020-03-12T22:49:55.962Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2020-03-12T22:49:55.962Z] CLI Version:   7.12.1
+[debug] [2020-03-12T22:49:55.962Z] Platform:      darwin
+[debug] [2020-03-12T22:49:55.962Z] Node Version:  v10.16.2
+[debug] [2020-03-12T22:49:55.963Z] Time:          Thu Mar 12 2020 17:49:55 GMT-0500 (Central Daylight Time)
+[debug] [2020-03-12T22:49:55.963Z] ----------------------------------------------------------------------
+[debug] [2020-03-12T22:49:55.963Z] 
+[debug] [2020-03-12T22:49:55.972Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-12T22:49:55.973Z] > authorizing via signed-in user
+[debug] [2020-03-12T22:49:55.973Z] [iam] checking project web-color-generator-3f213 for permissions ["firebase.projects.get"]
+[debug] [2020-03-12T22:49:55.974Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/web-color-generator-3f213:testIamPermissions  
+
+[debug] [2020-03-12T22:49:56.236Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-12T22:49:56.238Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/web-color-generator-3f213  
+ 
+[debug] [2020-03-12T22:49:56.463Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/arohan/Google Drive/Projects/Dev/colorPicker'...
+[info] 
+[debug] [2020-03-12T22:49:56.466Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/web-color-generator-3f213/webApps/-/config  
+ 
+[debug] [2020-03-12T22:49:56.756Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: dist
+[info] ✔  hosting: Local server: http://localhost:5000

@@ -72,18 +72,20 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-size: 0;
 }
 
 .colorRow {
   display: flex;
   flex-direction: column;
+  font-size: 0;
 }
 
 .colorCell {
   --color: #000000;
   height: 0.4rem;
   width: 0.2rem;
-  background-color: var(--color);
+  font-size: 10px;
 }
 
 #preview {

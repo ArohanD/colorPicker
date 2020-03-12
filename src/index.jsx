@@ -22,6 +22,7 @@ const App = () => {
   const newOffSet = useRef(offSet);
 
   const handleClick = (e) => {
+    console.log(e.target)
     const coordinates = JSON.parse(e.target.id);
     if (startPoint.length === 0 || adjustFirstCoordinate) {
       setStartPoint(coordinates)
